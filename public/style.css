@@ -1,0 +1,155 @@
+/* default value */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Start of the game*/
+.start-game {
+    width: 100%;
+    height: 100vh;
+    background-color: #54D17A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-game>.large-h {
+    margin: 0;
+    margin-bottom: -4rem;
+    font-size: 9rem;
+    color: rgb(227 255 233);
+}
+
+.start-game>button {
+    cursor: pointer;
+    width: 203px;
+    height: 55px;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    color: #54D17A;
+    transition: 0.3s ease-in;
+}
+
+.start-game>button:hover {
+    background-color: #e6ffde;
+    box-shadow: 1px 0px 4px 0px #e9ffe1;
+    border: none;
+}
+
+/* top side of the game */
+.header {
+    margin: 19px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    width: 450px;
+    height: 60px;
+}
+
+i {
+    font-size: 36px;
+}
+
+.name-game {
+    padding: 0px 4px 0px 4px;
+    font-size: 1.6rem;
+    margin-bottom: -29px;
+}
+
+.name-game:first-child {
+    margin-top: 0;
+}
+
+.left-side {
+    background-color: orange;
+    transition: 0.4s ease;
+}
+
+.right-side {
+    background-color: rgb(95, 95, 255);
+    transition: 0.4s ease;
+}
+
+/* main section */
+.game {
+    display: none;
+}
+
+.main {
+    margin-top: 63px;
+    height: 65vh;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    justify-content: center;
+    align-content: center;
+    gap: 4px;
+}
+
+.main>div {
+    cursor: pointer;
+    width: 157px;
+    height: 157px;
+    border: 1.1px solid black;
+}
+
+.main>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main>div>i {
+    font-size: 128px;
+    color: rgb(119, 119, 119);
+}
+
+
+.xmark,
+.circle {
+    display: none !important;
+}
+
+.background-circle {
+    background-color: rgb(95, 95, 255);
+    opacity: 1;
+    transition: 0.4s ease;
+}
+
+.background-xmark {
+    background-color: orange;
+    opacity: 1;
+    transition: 0.4s ease;
+}
+
+.color {
+    color: #ffffff !important;
+}
+
+.small-h {
+    margin: 0;
+    margin-bottom: -1.19rem;
+    font-size: 3rem;
+    color: rgb(227 255 233);
+}
+
+.finish-word {
+    font-size: 124px;
+    color: white;
+}
+
+.finish-word>button {
+    color: black;
+}
