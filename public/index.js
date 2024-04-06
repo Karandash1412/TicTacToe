@@ -25,7 +25,7 @@ const winCombination = [
 
 let finishGameXmark = false;
 let finishGameCircle = false;
-let count = 0;
+let moveCount = 0;
 
 const topLeftSide = $("div.top-light").eq(1);
 const topRightSide = $("div.top-light").first();
@@ -60,8 +60,8 @@ function circle() {
 
             score.circleSide.push(detectDiv);
 
-            count++;
-            middleStep(count);
+            moveCount++;
+            middleStep(moveCount);
 
             topLeftSide.removeClass("right-side");
             topRightSide.addClass("left-side");
@@ -92,8 +92,8 @@ function xMark() {
 
             score.xMarkSide.push(detectDiv);
 
-            count++;
-            middleStep(count);
+            moveCount++;
+            middleStep(moveCount);
 
             topRightSide.removeClass("left-side");
             topLeftSide.addClass("right-side");
@@ -102,12 +102,14 @@ function xMark() {
 }
 
 
-function middleStep(count) {
-    mainCard.unbind("mouseenter mouseleave");
-    mainCard.unbind("click");
-
+function middleStep(moveCount) {
+    // Unbind hover and click events from main card
+    mainCard.off("mouseenter mouseleave click");
+    
+    // Check for win condition
     winCheck();
-
+ 
+    // Handle game end scenarios (win, draw, switch turns)
     if (finishGameXmark === true) {
         $(".start-game").css("display", "flex");
         $(".start-game").css("background-color", "orange");
@@ -129,7 +131,7 @@ function middleStep(count) {
         $("button").text("Restart");
         restart();
     }
-    else if (count === 9) {
+    else if (moveCount === 9) {
         $(".start-game").css("display", "flex");
         $(".start-game").css("background-color", "#54D17A");
         $(".finish").addClass("game");
@@ -139,7 +141,7 @@ function middleStep(count) {
         $(".finish-word").text("It's Draw, nobody win");
         $("button").text("Restart");
         restart();
-    } else if (count % 2 == 0) {
+    } else if (moveCount % 2 == 0) {
         circle()
     } else {
         xMark();
@@ -147,7 +149,7 @@ function middleStep(count) {
 }
 
 function winCheck() {
-    if (count < 5) {
+    if (moveCount < 5) {
         return;
     }
     for (let i = 0; i < winCombination.length; i++) {
@@ -165,7 +167,7 @@ function winCheck() {
 }
 
 function restart() {
-    count = 0;
+    moveCount = 0;
     for (let i = 0; i <= 9; i++) {
         $("#card" + i).removeClass("background-circle");
         $("#card" + i).children('i').first().removeClass("color");
